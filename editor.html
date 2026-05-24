@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <!-- kodovani CZ -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <!-- font -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="windows-1250">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- kompatibilita s internet explorer -->
+    <title>Foto Editor - Sekce EFEKTY</title>
+</head>
+
+<body>
+    <!-- start seznamu -->
+    <ul>
+        <li style="float:right"><a href="editor.html">Efekty</a></li>
+        <li style="float:right"><a href="index.html">Orezy</a></li>
+        <li style="float:right"><a href="resize.html">Velikost</a></li>
+
+    </ul>
+    <!-- konec seznamu -->
+
+    <div id="upload">
+        <!-- div pro upload cast aplikace -->
+        <p class="nadpis">Foto Editor - Sekce<u> EFEKTY</u></p>
+        <label for="uploader">
+            <p class="podnadpis">Kliknutim na tlacitko "Vybrat soubor" muzete vybrat obrazek k nahrani.</p>
+        </label>
+        <br>
+        <!-- filereader -->
+        <input type="file" id="uploader">
+    </div>
+    <!-- konec sekce pro nahravani obrazku -->
+    <div id="buttons">
+        <!-- div tlacitek -->
+        <button>Cernobila</button>
+        <button>Sepia efekt</button>
+        <button>Invertace barev</button>
+        <button>penc efekt</button>
+        <button>L efekt</button>
+        <button>GX efekt</button>
+        <button>Cervena</button>
+        <button>Zelena</button>
+        <button>Modra</button>
+        <button>Zrusit filtr</button>
+        <button value="Refresh Page" onClick="window.location.reload();">Novy obrazek</button>
+        <!-- button pro novy obrazek -->
+    </div>
+    <div>
+        <center>
+            <canvas id="canvas"></canvas>
+            <center>
+                <!-- cast aplikace pro vykreslovani canvasu -->
+    </div>
+    <center>
+        <div id="save">
+            <!-- tlacitko pro stazeni fotky -->
+            <button class="uložit" onclick="save2()" download>Save</button>
+      
+        </div>
+        <center>
+
+            <script src="script.js"></script>
+            <!-- odkaz na externi script -->
+
+</body>
+
+</html>

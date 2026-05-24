@@ -1,0 +1,90 @@
+  body{
+
+    }
+    html{
+      font-family: 'Roboto', sans-serif;
+      background-image: url('pozadi.png');
+      margin:0;
+      color:white;
+      padding:0;
+      background-color:#333;
+    }
+    #upload{
+      padding-top:10px;
+      text-align:center;
+        background-image: url('tlacitka.png');
+      border-radius:10px;
+      border: 2px solid white;
+    }
+    input{
+      margin: 2em 0;
+    }
+    #buttons{
+      display:flex;
+
+      justify-content: space-evenly;
+      margin: 2em 0;
+      color:white;
+      border: 1px solid white;
+      border-radius:10px;
+      padding:10px;
+    }
+    button{
+      color:white;
+      background-image: url('tlacitka.png');
+      border-radius:10px;
+      border: 1px solid black;
+      width:12em;
+      height:6em;
+      padding:10px;
+      font-size:18px;
+    }
+    canvas{
+      max-width:100%;
+      width:50%;
+      height:50%;
+    }
+    ul {
+  font-family: 'Roboto', sans-serif;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-image: url('pozadi.png');
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  font-size:20px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover:not(.active) {
+  background-image: url('tl.png');
+}
+.nadpis{
+  font-size:50px;
+
+}
+.podnadpis{
+  font-size:20px;
+}
+input[type=submit] {
+    width: 20em;  height: 3em;
+		font-size:15px;
+}
+input[type=file] {
+    width: 20em;  height: 3em;
+		font-size:15px;
+}
+#save{
+margin-top:15px;
+
+}

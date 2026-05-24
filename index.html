@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="cs">
+<!-- cesky jazyk -->
+
+<head>
+    <title>Foto editor</title>
+    <!-- nazev stranky -->
+    <meta charset="utf-8">
+
+    <!-- jQuery knihovna -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- externi odkaz na style.css -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- imgAreaSelect plugin -->
+    <link rel="stylesheet" href="css/imgareaselect.css" />
+    <script src="js/jquery.imgareaselect.js"></script>
+
+    <script>
+
+
+        // nastaveni pixelu, ktere uzivatel oznacil
+        function updateCoords(im, obj) {
+            var img = document.getElementById("imagePreview"); //ziskani obrazku
+            var orgHeight = img.naturalHeight; //nahrany obrazek stejne vysoky jako puvodni
+            var orgWidth = img.naturalWidth; //nahrany obrazek stejne siroky jako puvodni
+
+            var porcX = orgWidth / im.width; //vypocty pro urceni zacatku x
+            var porcY = orgHeight / im.height; //vypocty pro urceni zacatku y
+
+            $('input#x').val(Math.round(obj.x1 * porcX)); //vypocty pro ziskani plochy
+            $('input#y').val(Math.round(obj.y1 * porcY));
+            $('input#w').val(Math.round(obj.width * porcX));
+            $('input#h').val(Math.round(obj.height * porcY));
+        }
+
+        $(document).ready(function() {
+            // pripraveni obrazku
+            var p = $("#imagePreview");
+            $("#fileInput").change(function() {
+                //schovani puvodniho obrazku
+                p.fadeOut();
+
+                //priprava filereaderu pro vypis nahraneho obrazku
+                var oFReader = new FileReader();
+                oFReader.readAsDataURL(document.getElementById("fileInput").files[0]);
+
+                oFReader.onload = function(oFREvent) {
+                    p.attr('src', oFREvent.target.result).fadeIn();
+                };
+            });
+
+            //imageareaselect plugin
+            $('#imagePreview').imgAreaSelect({
+                onSelectEnd: updateCoords
+            });
+        });
+
+        // funkce pro zkontrolovani, asi uzivatel oznacil nejakou oblast
+        function kontrolaOblasti() {
+            if (parseInt($('#w').val())) return true;
+              alert('Vyberte nejakou oblast.');
+              return false;
+        }
+
+    </script>
+
+    <!-- externi odkaz na style.css  -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- globalni div -->
+        <ul>
+            <!-- zacatek seznamu -->
+            <li style="float:right"><a href="editor.html">Efekty</a></li>
+            <li style="float:right"><a href="index.html">Orezy</a></li>
+            <li style="float:right"><a href="resize.html">Resize</a></li>
+
+        </ul>
+        <!-- konec seznamu -->
+        <div id="upload">
+            <!-- sekce programu pro nahrani obrazku -->
+            <p class="nadpis">Foto Editor - Sekce <u>OREZ</u></p>
+            <form method="post" action="upload.php" enctype="multipart/form-data" onsubmit="return kontrolaOblasti();">
+                <!-- vybrani obrazku a poslani na php -->
+                <p class="podnadpis">Kliknutim na tlacitko "Vybrat soubor" muzete vybrat obrazek k orezu.
+                    <br>
+                    <input name="image" id="fileInput" size="30" type="file" />
+                    <br>
+                </p>
+                <input type="hidden" id="x" name="x" />
+                <!-- schovane souradnice obrazku -->
+                <input type="hidden" id="y" name="y" />
+                <input type="hidden" id="w" name="w" />
+                <input type="hidden" id="h" name="h" />
+                <div class="tlacitko">
+                    <input name="upload" type="submit" height="100px" value="Orez" />
+                    <!-- konec sekce pro nahrani obrazku -->
+                </div>
+            </form>
+
+        </div>
+        <center>
+
+            <!-- sekce pro zobrazeni obrazku -->
+            <p><img id="imagePreview" style="display:none;" /></p>
+        </center>
+    </div>
+        <center><button value="Refresh Page" onClick="window.location.reload();">Novy obrazek</button></center>
+    </div>
+</body>
+
+</html>

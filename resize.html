@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="cs">
+<!-- jazyk cestina -->
+
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- odkaz na styly -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <!-- font -->
+    <meta charset="windows-1250">
+    <!-- kodovani -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- kompatibilita s internet explorer -->
+    <title>Foto Editor</title>
+    <!-- jmeno stranky -->
+    <link href="https://code.jquery.com/ui/1.10.4/themes/ui-lightness/jquery-ui.css" rel="stylesheet">
+    <!-- knihovna pro resize -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <!-- odkaz na jquery -->
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <!-- odkaz na jquery -->
+    <script>
+        $(function() {
+            $("#canvas").resizable();
+        });
+    </script>
+    <!-- funkce pro resize-->
+</head>
+
+<body>
+
+    <ul>
+        <!-- zacatek seznamu-->
+        <li style="float:right"><a href="editor.html">Efekty</a></li>
+        <li style="float:right"><a href="index.html">Orezy</a></li>
+        <li style="float:right"><a href="resize.html">Resize</a></li>
+
+    </ul>
+    <!-- konec seznamu-->
+
+    <div id="upload">
+        <!-- sekce aplikace pro nahravani obrazku -->
+        <p class="nadpis">Foto Editor - Sekce <u>VELIKOST</u></p>
+        <!-- nadpis -->
+        <label for="uploader">
+            <p class="podnadpis">Kliknutim na tlacitko "Vybrat soubor" muzete vybrat obrazek k nahrani.</p>
+        </label>
+        <br>
+        <input type="file" id="uploader">
+    </div>
+    <!--konec sekce pro nahravani obrazku -->
+
+    <div>
+        <br>
+        <center>
+            <canvas id="canvas"></canvas>
+            <center>
+                <!-- cast aplikace pro vykreslovani canvas-->
+    </div>
+    <center>
+        <div id="save">
+            <!-- cast aplikace pro stahovani obrazku-->
+            <button class="ulozit" onclick="save2()" download>Save</button>
+            <button value="Refresh Page" onClick="window.location.reload();">Novy obrazek</button>
+        </div>
+        <center>
+
+            <script src="script.js"></script>
+            <!--externi odkaz na javascript -->
+
+</body>
+
+</html>
